@@ -1,0 +1,6 @@
+E:\netcode\ConsoleTask\ConsoleTask\bin\Debug\ConsoleTask.exe.config
+E:\netcode\ConsoleTask\ConsoleTask\bin\Debug\ConsoleTask.exe
+E:\netcode\ConsoleTask\ConsoleTask\bin\Debug\ConsoleTask.pdb
+E:\netcode\ConsoleTask\ConsoleTask\obj\Debug\ConsoleTask.csprojResolveAssemblyReference.cache
+E:\netcode\ConsoleTask\ConsoleTask\obj\Debug\ConsoleTask.exe
+E:\netcode\ConsoleTask\ConsoleTask\obj\Debug\ConsoleTask.pdb
