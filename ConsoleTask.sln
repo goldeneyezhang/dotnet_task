@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTask", "ConsoleTask\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleThreadPool", "ConsoleThreadPool\ConsoleThreadPool.csproj", "{406DB589-D128-4BFD-9014-B7D7EE05473D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAutofac", "ConsoleAutofac\ConsoleAutofac.csproj", "{8FC1B197-00DA-4D12-BF5D-903F9ED44A14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{406DB589-D128-4BFD-9014-B7D7EE05473D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{406DB589-D128-4BFD-9014-B7D7EE05473D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{406DB589-D128-4BFD-9014-B7D7EE05473D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC1B197-00DA-4D12-BF5D-903F9ED44A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC1B197-00DA-4D12-BF5D-903F9ED44A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC1B197-00DA-4D12-BF5D-903F9ED44A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC1B197-00DA-4D12-BF5D-903F9ED44A14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
