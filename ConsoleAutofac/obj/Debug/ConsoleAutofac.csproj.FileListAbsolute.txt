@@ -21,3 +21,9 @@ E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\System.Web.Razor.xml
 E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\System.Web.WebPages.xml
 E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\System.Web.WebPages.Razor.xml
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.dll
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.SimpleCRUD.dll
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.pdb
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.xml
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.SimpleCRUD.pdb
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.SimpleCRUD.xml

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,8 +16,10 @@ namespace ConsoleAutofac
 		{
 			var builder = new ContainerBuilder();
 			//builder.RegisterType<WriteString>().As<IWrite>();
-			builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).Where(x=>x.GetInterfaces().Contains(typeof(IDependency))).AsImplementedInterfaces().InstancePerDependency();
-			builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).Where(x => x.GetInterfaces().Contains(typeof(ISingleton))).AsImplementedInterfaces().SingleInstance();
+			//builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).Where(x=>x.GetInterfaces().Contains(typeof(IDependency))).AsImplementedInterfaces().InstancePerDependency();
+			//builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).Where(x => x.GetInterfaces().Contains(typeof(ISingleton))).AsImplementedInterfaces().SingleInstance();
+
+			builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces().InstancePerDependency();
 			//使用Single Instance作用域，所有对父容器或者嵌套容器的请求都会返回同一个实例。
 			//builder.RegisterType<WriteString>().As<IWrite>().SingleInstance();
 			//　这个作用域适用于嵌套的生命周期。一个使用Per Lifetime 作用域的component在一个 nested lifetime scope内最多有一个实例。
@@ -32,6 +35,7 @@ namespace ConsoleAutofac
 			IWriteLine writeLine1 = container.Resolve<IWriteLine>();
 			IWriteLine writeLine2 = container.Resolve<IWriteLine>();
 			Console.WriteLine(writeLine1 == writeLine2);
+			IDbConnection connection=
 			Console.Read();
 		}
 	}
