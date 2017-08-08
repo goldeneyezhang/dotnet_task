@@ -1,0 +1,6 @@
+E:\netcode\ConsoleTask\ConsoleThreadPool\bin\Debug\ConsoleThreadPool.exe.config
+E:\netcode\ConsoleTask\ConsoleThreadPool\bin\Debug\ConsoleThreadPool.exe
+E:\netcode\ConsoleTask\ConsoleThreadPool\bin\Debug\ConsoleThreadPool.pdb
+E:\netcode\ConsoleTask\ConsoleThreadPool\obj\Debug\ConsoleThreadPool.csprojResolveAssemblyReference.cache
+E:\netcode\ConsoleTask\ConsoleThreadPool\obj\Debug\ConsoleThreadPool.exe
+E:\netcode\ConsoleTask\ConsoleThreadPool\obj\Debug\ConsoleThreadPool.pdb
