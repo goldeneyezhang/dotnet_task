@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleAutofac
 {
-	public class WriteString : IWrite
+	public interface IWriteLine: ISingleton
 	{
-		public void WriteLine(string text)
-		{
-			Console.Write("out:" + text);
-		}
+		void WriteLine(string text);
 	}
 }

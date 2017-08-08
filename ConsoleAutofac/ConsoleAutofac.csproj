@@ -70,9 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDependency.cs" />
-    <Compile Include="Interface1.cs" />
+    <Compile Include="ISingleton.cs" />
+    <Compile Include="IWrite.cs" />
+    <Compile Include="IWriteLine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WriteLine2.cs" />
     <Compile Include="WriteString.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 namespace ConsoleAutofac
 {
-	public interface IWrite
+	public interface IWrite: IDependency
 	{
 		 void WriteLine(string text);
 	}
