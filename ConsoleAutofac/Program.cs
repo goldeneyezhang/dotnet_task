@@ -2,6 +2,7 @@
 using ConsoleAutofac.Entity;
 using Dapper;
 using MySql.Data.MySqlClient;
+using RabbitMQ.Client;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -42,9 +43,22 @@ namespace ConsoleAutofac
 			SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
 			TestWrite();
 			//TestDapper();
-			TestRedis();
-			TestRedisSubscriber();
+			//TestRedis();
+			//TestRedisSubscriber();
+			TestRabbitmq();
 			Console.Read();
+		}
+		public static void TestRabbitmq()
+		{
+			ConnectionFactory factory = new ConnectionFactory();
+			// "guest"/"guest" by default, limited to localhost connections
+			factory.UserName = "tangxd";
+			factory.Password = "123456";
+			factory.VirtualHost = "/";
+			factory.HostName = "192.168.2.47";
+			IConnection conn = factory.CreateConnection();
+			IModel channel = conn.CreateModel();
+			Console.WriteLine(conn.ToString());
 		}
 		public static void TestRedisSubscriber()
 		{
