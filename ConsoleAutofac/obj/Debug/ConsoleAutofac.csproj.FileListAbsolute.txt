@@ -27,3 +27,4 @@ E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.pdb
 E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.xml
 E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.SimpleCRUD.pdb
 E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\Dapper.SimpleCRUD.xml
+E:\netcode\ConsoleTask\ConsoleAutofac\bin\Debug\MySql.Data.dll

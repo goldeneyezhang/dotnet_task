@@ -1,7 +1,11 @@
 ﻿using Autofac;
+using ConsoleAutofac.Entity;
+using Dapper;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -26,17 +30,35 @@ namespace ConsoleAutofac
 			//builder.RegisterType<WriteString>().As<IWrite>().InstancePerLifetimeScope();
 			//　在其他容器中也称作瞬态或者工厂，使用Per Dependency作用域，服务对于每次请求都会返回互补影响实例。
 			//builder.RegisterType<WriteString>().As<IWrite>().InstancePerDependency();
-			container =builder.Build();
+			string connectionString = "server=192.168.2.47;user id=root;password=goldeneye;database=testzhang;allow zero datetime=true;charset=utf8;MaximumPoolSize=1000";
+			builder.RegisterInstance<IDbConnection>(new MySqlConnection(connectionString));
+			container = builder.Build();
+			SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
+			TestWrite();
+			TestDapper();
+
+			Console.Read();
+		}
+		public static void TestDapper()
+		{
+			IDbConnection connection = container.Resolve<IDbConnection>();
+			var result = connection.Get <UserEntity>(1);
+			// var resultInsert=connection.Insert(new UserEntity { FirstName = "User3", LastName = "Person3", Age = 13});
+			var list = connection.GetList<UserEntity>();
+			list = connection.GetList<UserEntity>(new { Age=10});
+			list = connection.GetList<UserEntity>("where age = 10 or lastname like '%son%'");
+			Console.WriteLine(list.Count());
+		}
+		public static void TestWrite()
+		{
 			IWrite write = container.Resolve<IWrite>();
 			write.WriteLine("haha");
 			Console.WriteLine("");
-			IWrite write2= container.Resolve<IWrite>();
+			IWrite write2 = container.Resolve<IWrite>();
 			Console.WriteLine(write == write2);
 			IWriteLine writeLine1 = container.Resolve<IWriteLine>();
 			IWriteLine writeLine2 = container.Resolve<IWriteLine>();
 			Console.WriteLine(writeLine1 == writeLine2);
-			IDbConnection connection=
-			Console.Read();
 		}
 	}
 }

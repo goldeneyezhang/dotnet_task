@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleAutofac.Entity
 {
-	[Table("user")]
-	public class User
+	[Table("usertable")]
+	public class UserEntity
 	{
 		[Key]
+		[Column("userid")]
 		public int UserId { get; set; }
 		[Column("strFirstName")]  //真实列名
 		public string FirstName { get; set; }//列别名
