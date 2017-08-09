@@ -2,6 +2,7 @@
 using ConsoleAutofac.Entity;
 using Dapper;
 using MySql.Data.MySqlClient;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,20 +33,31 @@ namespace ConsoleAutofac
 			//builder.RegisterType<WriteString>().As<IWrite>().InstancePerDependency();
 			string connectionString = "server=192.168.2.47;user id=root;password=goldeneye;database=testzhang;allow zero datetime=true;charset=utf8;MaximumPoolSize=1000";
 			builder.RegisterInstance<IDbConnection>(new MySqlConnection(connectionString));
+			ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("192.168.2.47");
+			IDatabase db = redis.GetDatabase();
+			builder.RegisterInstance<IDatabase>(db);//注入redisdb
 			container = builder.Build();
 			SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
 			TestWrite();
-			TestDapper();
-
+			//TestDapper();
+			TestRedis();
 			Console.Read();
+		}
+		public static void TestRedis()
+		{
+			IDatabase db = container.Resolve<IDatabase>();
+			string value = "abcdefg";
+			db.StringSet("mykey", value);
+			string valueGet = db.StringGet("mykey");
+			Console.WriteLine(valueGet); // writes: "abcdefg"
 		}
 		public static void TestDapper()
 		{
 			IDbConnection connection = container.Resolve<IDbConnection>();
-			var result = connection.Get <UserEntity>(1);
+			var result = connection.Get<UserEntity>(1);
 			// var resultInsert=connection.Insert(new UserEntity { FirstName = "User3", LastName = "Person3", Age = 13});
 			var list = connection.GetList<UserEntity>();
-			list = connection.GetList<UserEntity>(new { Age=10});
+			list = connection.GetList<UserEntity>(new { Age = 10 });
 			list = connection.GetList<UserEntity>("where age = 10 or lastname like '%son%'");
 			Console.WriteLine(list.Count());
 		}
