@@ -35,21 +35,62 @@ namespace ConsoleAutofac
 			builder.RegisterInstance<IDbConnection>(new MySqlConnection(connectionString));
 			ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("192.168.2.47");
 			IDatabase db = redis.GetDatabase();
+			ISubscriber sub = redis.GetSubscriber();
 			builder.RegisterInstance<IDatabase>(db);//注入redisdb
+			builder.RegisterInstance<ISubscriber>(sub);//注入redissub
 			container = builder.Build();
 			SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
 			TestWrite();
 			//TestDapper();
 			TestRedis();
+			TestRedisSubscriber();
 			Console.Read();
+		}
+		public static void TestRedisSubscriber()
+		{
+			ISubscriber sub = container.Resolve<ISubscriber>();
+			sub.Subscribe("messages", (channel, message) =>
+			{
+				Console.WriteLine((string)message);
+			});//非阻塞
+			Console.WriteLine("请输入后，回车发送消息");
+			string send = Console.ReadLine();
+			sub.Publish("messages", send);
 		}
 		public static void TestRedis()
 		{
 			IDatabase db = container.Resolve<IDatabase>();
+			//string
 			string value = "abcdefg";
 			db.StringSet("mykey", value);
 			string valueGet = db.StringGet("mykey");
 			Console.WriteLine(valueGet); // writes: "abcdefg"
+										 //hash
+			string hashkey = "hashkey";
+			string hashField = "hashfield";
+			string hashValue = "hashValue";
+			db.HashSet(hashkey, hashField, hashValue);
+			string valueHash = db.HashGet(hashkey, hashField);
+			Console.WriteLine(valueHash);
+			//set
+			string setKey = "setKey";
+			string setValue = "setValue";
+			db.SetAdd(setKey, setValue);
+			var setResult = db.SetMembers(setKey);
+			Console.WriteLine(setResult[0]);
+			//list
+			string listKey = "listKey";
+			string listValue = "listValue";
+			db.ListRightPush(listKey, listValue);
+			var listResult = db.ListLeftPop(listKey);
+			Console.WriteLine(listResult);
+			//sortedlist
+			string zlistkey = "zlistKey";
+			string zlistValue = "zlistValue";
+			db.SortedSetAdd(zlistkey, zlistValue, 10);
+			db.SortedSetAdd(zlistkey, zlistValue + "2", 5);
+			var zlistResult = db.SortedSetRangeByRank(zlistkey);
+			Console.WriteLine(zlistResult[0]);
 		}
 		public static void TestDapper()
 		{
