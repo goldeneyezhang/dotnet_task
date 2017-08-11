@@ -57,8 +57,30 @@ namespace ConsoleAutofac
 			factory.VirtualHost = "/";
 			factory.HostName = "192.168.2.47";
 			IConnection conn = factory.CreateConnection();
-			IModel channel = conn.CreateModel();
+			IModel model = conn.CreateModel();
 			Console.WriteLine(conn.ToString());
+			string exchangeName = "exchangeName1";
+			string queueName = "queueName1";
+			string routingKey = "routingKey1";
+			model.ExchangeDeclare(exchangeName, ExchangeType.Direct);
+			model.QueueDeclare(queueName, false, false, false, null);
+			model.QueueBind(queueName, exchangeName, routingKey, null);
+			//发布
+			byte[] messageBodyBytes = System.Text.Encoding.UTF8.GetBytes("Hello, world!");
+			model.BasicPublish(exchangeName, routingKey, null, messageBodyBytes);
+			//接收
+			bool noAck = false;
+			BasicGetResult result = model.BasicGet(queueName, noAck);
+			if (result == null)
+			{
+				// No message available at this time.
+			}
+			else
+			{
+				IBasicProperties props = result.BasicProperties;
+				byte[] body = result.Body;
+				
+			}
 		}
 		public static void TestRedisSubscriber()
 		{
