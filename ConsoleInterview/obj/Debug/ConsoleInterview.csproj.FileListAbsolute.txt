@@ -4,3 +4,4 @@ E:\netcode\ConsoleTask\ConsoleInterview\bin\Debug\ConsoleInterview.pdb
 E:\netcode\ConsoleTask\ConsoleInterview\obj\Debug\ConsoleInterview.csprojResolveAssemblyReference.cache
 E:\netcode\ConsoleTask\ConsoleInterview\obj\Debug\ConsoleInterview.exe
 E:\netcode\ConsoleTask\ConsoleInterview\obj\Debug\ConsoleInterview.pdb
+E:\netcode\ConsoleTask\ConsoleInterview\obj\Debug\ConsoleInterview.csproj.CoreCompileInputs.cache

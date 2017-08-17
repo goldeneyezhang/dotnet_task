@@ -28,7 +28,36 @@ namespace ConsoleInterview
 			classAAA.Publish();
 			classBBB.Publish();
 			classCCC.Publish();
+			B b = new B();
+			b.PrintFields();
 			Console.ReadLine();
+			
 		}
+	}
+	class A
+	{
+		public A()
+		{
+			PrintFields();
+		}
+		public virtual void PrintFields() { }
+	}
+	class B : A
+	{
+		int x = 1;
+		int y;
+		public B()
+		{
+			y = -1;
+		}
+		public override void PrintFields()
+		{
+			Console.WriteLine("x={0},y={1}", x, y);
+		}
+	}
+	//密封类型
+	public sealed class SealClass
+	{
+
 	}
 }
